@@ -22,8 +22,8 @@ public class service extends Service {
 
     @Override
     public void onCreate() {
-        Log.d(LOG_TAG, "start service");
-        mediaPlayer = mediaPlayer.create(this, R.raw.okea);
+        Log.d(LOG_TAG, "start service"); //FIXME wrong log string 
+        mediaPlayer = mediaPlayer.create(this, R.raw.okea);//FIXME where did you stoped service and released mediaplayer?
 
         super.onCreate();
     }
