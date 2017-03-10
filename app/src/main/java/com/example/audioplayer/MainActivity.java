@@ -13,7 +13,7 @@ import android.widget.SeekBar;
 
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
 
-    String LOG_TAG = "log";
+    String LOG_TAG = "log"; //FIXME there is no access modificator
     SeekBar seekBar;
 
     Intent intent;
@@ -31,7 +31,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(this);
 
-
+//FIXME read about Code convention: class naming, package naming etc.
         Conn = new ServiceConnection() {
 
             public void onServiceConnected(ComponentName name, IBinder binder) {
@@ -60,9 +60,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                 Log.d(LOG_TAG, "Main activity progress seek bar");
 
                 seekBar.setMax(myService.duration());
-                int wait = myService.duration() / 100;
+                int wait = myService.duration() / 100; //FIXME What is the magic number? use constants
 
-                while (true) {
+                while (true) {//FIXME You should stop this thread right after activity destroyed 
                     if (!myService.isplaying()) {
                         Log.d(LOG_TAG, "Main activity thread stoped");
                         return;
@@ -71,6 +71,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
                     try {
                         Thread.sleep(wait);
                     } catch (InterruptedException e) {
+                        //FIXME Use Log instead of print stacktrace
                         e.printStackTrace();
                     }
                 }
@@ -94,12 +95,12 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+//FIXME What is this method doing? Why body is empty?
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
+//FIXME What is this method doing?
     }
 
     @Override
